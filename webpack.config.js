@@ -41,7 +41,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.styl$/,
+        test: /\.styl(us)?$/,
         use: [
           {
             loader: 'style-loader'
