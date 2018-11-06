@@ -1,9 +1,9 @@
 <template>
     <div id="app">
         <div id="cover"></div>
-        <App_Header></App_Header>
-        <Todo></Todo>
-        <App_Footer></App_Footer>
+        <app_Header></app_Header>
+        <todo></todo>
+        <app_Footer></app_Footer>
     </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
     components: {
         App_Header,
         App_Footer,
-        Todo
+        Todo,
     }
 }
 </script>
