@@ -1,3 +1,4 @@
+const path = require('path')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
@@ -9,7 +10,7 @@ config = merge(baseConfig, {
   mode: 'production',
   devtool: 'source-map',
   entry: {
-    app: path.join(__dirname, '../src/index.js'),
+    app: path.join(__dirname, '../client/index.js'),
     vendor: ['vue']
   },
   output: {

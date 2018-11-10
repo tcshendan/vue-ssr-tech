@@ -2,10 +2,10 @@ const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 
 const config = {
-  entry: path.join(__dirname, '../src/index.js'),
+  entry: path.join(__dirname, '../client/index.js'),
   output: {
     filename: 'bundle.[hash:8].js',
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, '../dist')
   },
   module: {
     rules: [
