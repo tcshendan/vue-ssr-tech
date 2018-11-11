@@ -10,8 +10,7 @@ config = merge(baseConfig, {
   mode: 'production',
   devtool: 'source-map',
   entry: {
-    app: path.join(__dirname, '../client/index.js'),
-    vendor: ['vue']
+    app: path.join(__dirname, '../client/index.js')
   },
   output: {
     filename: '[name].[chunkhash:8].js'
@@ -21,7 +20,7 @@ config = merge(baseConfig, {
       {
         test: /\.styl(us)?$/,
         use: ExtractTextWebpackPlugin.extract({
-            fallback: 'style-loader',
+            fallback: 'vue-style-loader',
             use: [
             {
                 loader: 'css-loader'
@@ -46,15 +45,9 @@ config = merge(baseConfig, {
   ],
   optimization: {
     splitChunks: {
-      cacheGroups: {
-        vendor: {
-          name: 'vendor',
-          test: 'vendor',
-          chunks: 'all',
-          priority: 10
-        }
-      }
-    }
+      chunks: 'all'
+    },
+    runtimeChunk: true
   }
 })
 

@@ -23,10 +23,14 @@ config = merge(baseConfig, {
         test: /\.styl(us)?$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'vue-style-loader'
           },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[path]-[name]-[hash:base64:5]'
+            }
           },
           {
             loader: 'postcss-loader',
