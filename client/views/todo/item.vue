@@ -1,12 +1,12 @@
 <template>
-    <div :class="['todo-item', todo.completed ? 'completed' : '']">
+    <div :class="[$style['todo-item'], todo.completed ? $style.completed : '']">
         <input 
             type="checkbox"
-            class="toggle"
+            :class="$style.toggle"
             v-model="todo.completed"
         >
         <label>{{todo.content}}</label>
-        <button class="destory" @click="deleteTodo"></button>
+        <button :class="$style.destory" @click="deleteTodo"></button>
     </div>
 </template>
 
@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus" module>
 .todo-item
     position relative
     background-color #fff

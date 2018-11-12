@@ -1,6 +1,6 @@
 <template>
-    <div id="app">
-        <div id="cover"></div>
+    <div :id="$style.app">
+        <div :id="$style.cover"></div>
         <app_Header></app_Header>
         <todo></todo>
         <app_Footer></app_Footer>
@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus" module>
 #app
     position absolute 
     left 0

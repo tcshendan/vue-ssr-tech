@@ -1,17 +1,17 @@
 <template>
-    <div class="helper">
-        <span class="left">{{unFinishedTodoLength}} items left</span>
-        <span class="tabs">
+    <div :class="$style.helper">
+        <span :class="$style.left">{{unFinishedTodoLength}} items left</span>
+        <span :class="$style.tabs">
             <span 
                 v-for="state in states"
                 :key="state"
-                :class="['state', filter === state ? 'actived' : '']"
+                :class="[$style.state, filter === state ? $style.actived : '']"
                 @click="toggleFilter(state)"
             >
                 {{state}}
             </span>
         </span>
-        <span class="clear" @click="clearAllCompleted">Clear complated</span>
+        <span :class="$style.clear" @click="clearAllCompleted">Clear complated</span>
     </div>
 </template>
 
@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus" module>
 .helper
     font-weight 100
     display flex
