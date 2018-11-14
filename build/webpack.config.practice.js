@@ -6,8 +6,8 @@ const baseConfig = require('./webpack.config.base')
 
 const devServer = {
   contentBase: path.join(__dirname, 'dist'),
-  port: 8000,
-  host: '0.0.0.0',
+  port: 8080,
+  host: 'localhost',
   hot: true,
   overlay: true
 }
@@ -15,6 +15,7 @@ const devServer = {
 let config
 
 config = merge(baseConfig, {
+  entry: path.join(__dirname, '../practice/index.js'),
   mode: 'development',
   devtool: '#cheap-module-eval-source-map',
   module: {
@@ -46,10 +47,16 @@ config = merge(baseConfig, {
     ]
   },
   devServer,
+  resolve: {
+    alias: {
+      'vue': path.join(__dirname, '../node_modules/vue/dist/vue.esm.js')
+    }
+  },
   plugins: [
-    new HtmlWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'template.html')
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ]
 })
 
