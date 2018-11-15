@@ -1,21 +1,21 @@
 <template>
     <div :id="$style.app">
         <div :id="$style.cover"></div>
-        <app_Header></app_Header>
+        <app-header></app-header>
         <todo></todo>
-        <app_Footer></app_Footer>
+        <app-footer></app-footer>
     </div>
 </template>
 
 <script>
-import App_Header from './layout/header.vue'
-import App_Footer from './layout/footer.jsx'
+import appHeader from './layout/header.vue'
+import appFooter from './layout/footer.jsx'
 import Todo from './views/todo/todo.vue'
 
 export default {
     components: {
-        App_Header,
-        App_Footer,
+        appHeader,
+        appFooter,
         Todo,
     }
 }
@@ -23,14 +23,14 @@ export default {
 
 <style lang="stylus" module>
 #app
-    position absolute 
+    position absolute
     left 0
     right 0
     top 0
     bottom 0
 
 #cover
-    position absolute 
+    position absolute
     left 0
     right 0
     top 0
