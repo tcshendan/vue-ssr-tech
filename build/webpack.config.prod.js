@@ -20,27 +20,29 @@ config = merge(baseConfig, {
       {
         test: /\.styl(us)?$/,
         use: ExtractTextWebpackPlugin.extract({
-            fallback: 'vue-style-loader',
-            use: [
+          fallback: 'vue-style-loader',
+          use: [
             {
-                loader: 'css-loader'
+              loader: 'css-loader'
             },
             {
-                loader: 'postcss-loader',
-                options: {
+              loader: 'postcss-loader',
+              options: {
                 sourceMap: true
-                }
+              }
             },
             {
-                loader: 'stylus-loader'
+              loader: 'stylus-loader'
             }
-            ]
+          ]
         })
-      },
+      }
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'template.html')
+    }),
     new ExtractTextWebpackPlugin('styles.[hash:8].css')
   ],
   optimization: {

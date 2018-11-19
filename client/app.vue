@@ -2,7 +2,8 @@
     <div :id="$style.app">
         <div :id="$style.cover"></div>
         <app-header></app-header>
-        <todo></todo>
+        <!-- <todo></todo> -->
+        <router-view />
         <app-footer></app-footer>
     </div>
 </template>

@@ -47,7 +47,9 @@ config = merge(baseConfig, {
   },
   devServer,
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'template.html')
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   ]
