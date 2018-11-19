@@ -5,7 +5,10 @@
         <router-link to="/app">app</router-link>
         <router-link to="/login">login</router-link>
         <!-- <todo></todo> -->
-        <router-view></router-view>
+        <transition name="fade">
+          <router-view></router-view>
+        </transition>
+
         <app-footer></app-footer>
     </div>
 </template>

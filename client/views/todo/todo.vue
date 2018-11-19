@@ -1,24 +1,25 @@
 <template>
     <section :class="$style['real-app']">
-        <input 
+        <input
             type="text"
             :class="$style['add-input']"
             autofocus="autofocus"
             placeholder="接下去要做什么？"
             @keyup.enter="addTodo"
         >
-        <item 
-            v-for="todo in filteredTodos" 
-            :key="todo.id" 
+        <item
+            v-for="todo in filteredTodos"
+            :key="todo.id"
             :todo="todo"
             @del="deleteTodo"
         ></item>
-        <tabs 
-            :filter="filter" 
+        <tabs
+            :filter="filter"
             :todos="todos"
             @toggle="toggleFilter"
             @clearAllCompleted="clearAllCompleted"
         ></tabs>
+        <!-- <router-view></router-view> -->
     </section>
 </template>
 
@@ -29,6 +30,7 @@ import Tabs from './tabs.vue'
 let id = 0
 
 export default {
+    props: ['id'],
     data() {
         return {
             todos: [],
@@ -84,15 +86,15 @@ export default {
     margin 0
     width 100%
     font-size 24px
-    font-family inherit 
-    font-weight inherit 
+    font-family inherit
+    font-weight inherit
     line-height 1.4em
     border 0
     outline none
-    color inherit 
+    color inherit
     box-sizing border-box
     padding 16px 16px 16px 60px
-    border none 
+    border none
     box-shadow inset 0 -2px 1px rgba(0, 0, 0, 0.06);
 </style>
 
