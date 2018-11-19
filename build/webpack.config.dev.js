@@ -7,9 +7,14 @@ const baseConfig = require('./webpack.config.base')
 const devServer = {
   contentBase: path.join(__dirname, 'dist'),
   port: 8000,
-  host: '0.0.0.0',
-  hot: true,
-  overlay: true
+  host: '127.0.0.1',
+  overlay: {
+    errors: true
+  },
+  historyApiFallback: {
+    index: '/index.html'
+  },
+  hot: true
 }
 
 let config

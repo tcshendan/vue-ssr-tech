@@ -2,8 +2,10 @@
     <div :id="$style.app">
         <div :id="$style.cover"></div>
         <app-header></app-header>
+        <router-link to="/app">app</router-link>
+        <router-link to="/login">login</router-link>
         <!-- <todo></todo> -->
-        <router-view />
+        <router-view></router-view>
         <app-footer></app-footer>
     </div>
 </template>
@@ -14,11 +16,11 @@ import appFooter from './layout/footer.jsx'
 import Todo from './views/todo/todo.vue'
 
 export default {
-    components: {
-        appHeader,
-        appFooter,
-        Todo,
-    }
+  components: {
+    appHeader,
+    appFooter,
+    Todo,
+  }
 }
 </script>
 
