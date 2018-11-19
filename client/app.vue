@@ -5,7 +5,13 @@
         <router-link to="/app">app</router-link>
         <router-link to="/login">login</router-link>
         <!-- <todo></todo> -->
-        <transition name="fade">
+        <transition
+          name="fade"
+          :enter-active-class="$style['fade-enter-active']"
+          :leave-active-class="$style['fade-leave-active']"
+          :enter="$style['fade-enter']"
+          :leave-to-class="$style['fade-leave-to']"
+        >
           <router-view></router-view>
         </transition>
 
@@ -44,4 +50,10 @@ export default {
     background-color #999
     opacity 0.9
     z-index -1
+
+.fade-enter-active, .fade-leave-active
+    transition opacity .5s
+
+.fade-enter, .fade-leave-to
+    opacity 0
 </style>
