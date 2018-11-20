@@ -3,7 +3,8 @@
     "@babel/preset-env"
   ],
   "plugins": [
-    "babel-plugin-syntax-jsx",
-    "babel-plugin-transform-vue-jsx"
+    "babel-plugin-transform-vue-jsx",
+    "@babel/plugin-syntax-jsx",
+    "@babel/plugin-syntax-dynamic-import"
   ]
 }

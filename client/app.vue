@@ -2,7 +2,8 @@
     <div :id="$style.app">
         <div :id="$style.cover"></div>
         <app-header></app-header>
-        <router-link to="/app">app</router-link>
+        <router-link to="/app/123">app123</router-link>
+        <router-link to="/app/456">app456</router-link>
         <router-link to="/login">login</router-link>
         <!-- <todo></todo> -->
         <transition
@@ -14,7 +15,6 @@
         >
           <router-view></router-view>
         </transition>
-
         <app-footer></app-footer>
     </div>
 </template>
@@ -22,13 +22,13 @@
 <script>
 import appHeader from './layout/header.vue'
 import appFooter from './layout/footer.jsx'
-import Todo from './views/todo/todo.vue'
+// import Todo from './views/todo/todo.vue'
 
 export default {
   components: {
     appHeader,
     appFooter,
-    Todo,
+    // Todo,
   }
 }
 </script>
