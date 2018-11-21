@@ -39,31 +39,42 @@ export default {
   },
   mounted () {
     console.log(this.$store)
-    let i = 1
-    // this.updateCountAsync({
-    //   num: 5,
-    //   time: 2000
-    // })
+    // let i = 1
+    this.updateCountAsync({
+      num: 5,
+      time: 2000
+    })
+    // this['a/updateText']('123')
+    // this['a/add']()
+    // this['b/testAction']()
     // this.$store.state.count = 3
-    setInterval(() => {
-      this.updateCount({
-        num: i++,
-        num2: 2
-      })
-    }, 1000)
+    // setInterval(() => {
+    //   this.updateCount({
+    //     num: i++,
+    //     num2: 2
+    //   })
+    // }, 1000)
   },
   methods: {
-    ...mapActions(['updateCountAsync']),
-    ...mapMutations(['updateCount'])
+    ...mapActions(['updateCountAsync', 'a/add', 'b/testAction']),
+    ...mapMutations(['updateCount', 'a/updateText'])
   },
   computed: {
+    // textA () {
+    //   return this.$store.state.a.text
+    // },
     ...mapState({
       counter: (state) => state.count
+      // textA: state => state.a.text,
+      // textC: state => state.c.text
     }),
     // count () {
     //   return this.$store.state.count
     // },
-    ...mapGetters(['fullName'])
+    ...mapGetters({
+      fullName: 'fullName'
+      // textPlus: 'a/textPlus'
+    })
     // fullName () {
     //   return this.$store.getters.fullName
     // }
