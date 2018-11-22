@@ -1,5 +1,6 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
+const VueClientPlugin = require('vue-server-renderer/client-plugin')
 const createVueLoaderOptions = require('./vue-loader.config')
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -50,7 +51,8 @@ const config = {
     ]
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new VueClientPlugin()
   ]
 }
 
