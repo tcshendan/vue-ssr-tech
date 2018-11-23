@@ -9,6 +9,7 @@ let config
 
 config = merge(baseConfig, {
   target: 'node',
+  mode: 'development',
   entry: path.join(__dirname, '../client/server-entry.js'),
   devtool: 'source-map',
   output: {
@@ -42,7 +43,10 @@ config = merge(baseConfig, {
     ]
   },
   plugins: [
-    new ExtractTextWebpackPlugin('styles.[hash:8].css'),
+    new ExtractTextWebpackPlugin({
+      filename: 'styles.[hash:8].css',
+      allChunks: true
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.VUE_ENV': '"server"'

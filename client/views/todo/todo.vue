@@ -47,7 +47,7 @@ export default {
         // }
         next()
     },
-    props: ['id'],
+    // props: ['id'],
     mounted () {
       console.log('todo mounted')
     },

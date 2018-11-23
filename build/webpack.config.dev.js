@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const VueClientPlugin = require('vue-server-renderer/client-plugin')
 const baseConfig = require('./webpack.config.base')
 
 const devServer = {
@@ -12,7 +13,7 @@ const devServer = {
     errors: true
   },
   historyApiFallback: {
-    index: '/index.html'
+    index: '/public/index.html'
   },
   hot: true
 }
@@ -56,7 +57,7 @@ config = merge(baseConfig, {
       template: path.join(__dirname, 'template.html')
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new VueClientPlugin()
   ]
 })
 

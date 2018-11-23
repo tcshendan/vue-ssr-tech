@@ -1,7 +1,8 @@
 const path = require('path')
 const merge = require('webpack-merge')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const VueClientPlugin = require('vue-server-renderer/client-plugin')
 const baseConfig = require('./webpack.config.base')
 
 let config
@@ -43,7 +44,8 @@ config = merge(baseConfig, {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'template.html')
     }),
-    new ExtractTextWebpackPlugin('styles.[hash:8].css')
+    new ExtractTextWebpackPlugin('styles.[hash:8].css'),
+    new VueClientPlugin()
   ],
   optimization: {
     splitChunks: {

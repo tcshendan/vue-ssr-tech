@@ -3,8 +3,9 @@
         <div :id="$style.cover"></div>
         <app-header></app-header>
         <p>{{fullName}} {{counter}}</p>
-        <router-link to="/app/123">app123</router-link>
-        <router-link to="/app/456">app456</router-link>
+        <router-link to="/app">app</router-link>
+        <!-- <router-link to="/app/123">app123</router-link> -->
+        <!-- <router-link to="/app/456">app456</router-link> -->
         <router-link to="/login">login</router-link>
         <!-- <todo></todo> -->
         <transition

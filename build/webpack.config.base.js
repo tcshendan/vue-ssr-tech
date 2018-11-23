@@ -1,10 +1,8 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
-const VueClientPlugin = require('vue-server-renderer/client-plugin')
 const createVueLoaderOptions = require('./vue-loader.config')
 
 const isDev = process.env.NODE_ENV === 'development'
-console.log(isDev)
 
 const config = {
   target: 'web',
@@ -12,7 +10,7 @@ const config = {
   output: {
     filename: 'bundle.[hash:8].js',
     path: path.join(__dirname, '../dist'),
-    publicPath: '/'
+    publicPath: 'http://127.0.0.1:8000/public/'
   },
   module: {
     rules: [
@@ -51,8 +49,7 @@ const config = {
     ]
   },
   plugins: [
-    new VueLoaderPlugin(),
-    new VueClientPlugin()
+    new VueLoaderPlugin()
   ]
 }
 
