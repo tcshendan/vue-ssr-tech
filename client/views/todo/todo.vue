@@ -30,6 +30,9 @@ import Tabs from './tabs.vue'
 let id = 0
 
 export default {
+    metaInfo: {
+      title: 'The Todo App'
+    },
     beforeRouteEnter (to, from, next) {
         console.log('todo before enter', this)
         next(vm => {
