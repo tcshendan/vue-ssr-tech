@@ -14,7 +14,8 @@ config = merge(baseConfig, {
     app: path.join(__dirname, '../client/client-entry.js')
   },
   output: {
-    filename: '[name].[chunkhash:8].js'
+    filename: '[name].[chunkhash:8].js',
+    publicPath: '/public/'
   },
   module: {
     rules: [
@@ -48,7 +49,10 @@ config = merge(baseConfig, {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'template.html')
     }),
-    new ExtractTextWebpackPlugin('styles.[hash:8].css'),
+    new ExtractTextWebpackPlugin({
+      filename: 'styles.[hash:8].css',
+      allChunks: true
+    }),
     new VueClientPlugin()
   ],
   optimization: {
