@@ -54,13 +54,13 @@ config = merge(baseConfig, {
       allChunks: true
     }),
     new VueClientPlugin()
-  ],
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    },
-    runtimeChunk: true
-  }
+  ]
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all'
+  //   },
+  //   runtimeChunk: true
+  // }
 })
 
 module.exports = config
