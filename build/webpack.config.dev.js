@@ -12,6 +12,7 @@ const devServer = {
   overlay: {
     errors: true
   },
+  headers: { 'Acess-Control-Allow-Origin': '*' },
   historyApiFallback: {
     index: '/public/index.html'
   },

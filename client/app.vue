@@ -2,9 +2,9 @@
     <div :id="$style.app">
         <div :id="$style.cover"></div>
         <app-header></app-header>
-        <p>{{fullName}} {{counter}}</p>
+        <!-- <p>{{fullName}} {{counter}}</p>
         <router-link to="/app">app</router-link>
-        <router-link to="/login">login</router-link>
+        <router-link to="/login">login</router-link> -->
         <!-- <todo></todo> -->
         <transition
           name="fade"
@@ -15,6 +15,8 @@
         >
           <router-view></router-view>
         </transition>
+        <button @click="notify">click me</button>
+        <!-- <notification content="test notify"></notification> -->
         <app-footer></app-footer>
     </div>
 </template>
@@ -40,12 +42,12 @@ export default {
     // Todo,
   },
   mounted () {
-    console.log(this.$store)
+    // console.log(this.$store)
     // let i = 1
-    this.updateCountAsync({
-      num: 5,
-      time: 2000
-    })
+    // this.updateCountAsync({
+    //   num: 5,
+    //   time: 2000
+    // })
     // this['a/updateText']('123')
     // this['a/add']()
     // this['b/testAction']()
@@ -59,7 +61,13 @@ export default {
   },
   methods: {
     ...mapActions(['updateCountAsync', 'a/add', 'b/testAction']),
-    ...mapMutations(['updateCount', 'a/updateText'])
+    ...mapMutations(['updateCount', 'a/updateText']),
+    notify () {
+      this.$notify({
+        content: 'test $notify',
+        btn: 'close'
+      })
+    }
   },
   computed: {
     // textA () {
