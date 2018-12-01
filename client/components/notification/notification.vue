@@ -5,11 +5,15 @@
     :leave-active-class="$style['fade-leave-active']"
     :enter="$style['fade-enter']"
     :leave-to-class="$style['fade-leave-to']"
-    >
+    @after-leave="afterLeave"
+    @after-enter="afterEnter"
+  >
     <div
       :class="$style.notification"
       :style="style"
       v-show="visible"
+      @mouseenter="clearTimer"
+      @mouseleave="createTimer"
     >
       <span :class="$style.content">{{content}}</span>
       <a :class="$style.btn" @click="handleClose">{{btn}}</a>
@@ -44,7 +48,13 @@ export default {
     handleClose (e) {
       e.preventDefault();
       this.$emit('close')
-    }
+    },
+    afterLeave () {
+      this.$emit('closed')
+    },
+    afterEnter () {},
+    clearTimer () {},
+    createTimer () {}
   }
 }
 </script>
