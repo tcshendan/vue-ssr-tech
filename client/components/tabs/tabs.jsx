@@ -16,5 +16,10 @@ export default {
         </ul>
       </div>
     )
+  },
+  methods: {
+    onChange (index) {
+      this.$emit('change', index)
+    }
   }
 }

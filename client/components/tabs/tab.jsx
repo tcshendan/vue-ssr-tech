@@ -17,6 +17,11 @@ export default {
       return this.$parent.value === this.index
     }
   },
+  methods: {
+    handleClick () {
+      this.$parent.onChange(this.index)
+    }
+  },
   render () {
     const tab = this.$slots.label || <span>{this.label}</span>
     const classNames = {
@@ -24,7 +29,7 @@ export default {
       [styles.active]: this.active
     }
     return (
-      <li class={classNames}>
+      <li class={classNames} on-click={this.handleClick}>
         {tab}
       </li>
     )
