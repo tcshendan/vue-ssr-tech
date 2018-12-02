@@ -1,4 +1,5 @@
-<script>
+import styles from '../../assets/styles/tab.styl'
+
 export default {
   name: 'Tabs',
   props: {
@@ -9,12 +10,11 @@ export default {
   },
   render () {
     return (
-      <div class='tabs'>
-        <ul class='tabs-header'>
+      <div>
+        <ul class={styles['tabs-header']}>
           {this.$slots.default}
         </ul>
       </div>
     )
   }
 }
-</script>
