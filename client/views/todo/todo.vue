@@ -28,10 +28,14 @@
 </template>
 
 <script>
+import {
+  mapState,
+  mapActions
+} from 'vuex'
 import Item from './item.vue'
 import Helper from './helper.vue'
 
-let id = 0
+// let id = 0
 
 export default {
     metaInfo: {
@@ -56,11 +60,11 @@ export default {
     },
     // props: ['id'],
     mounted () {
-      console.log('todo mounted')
+      // console.log('todo mounted')
+      this.fetchTodos()
     },
     data() {
         return {
-            todos: [],
             filter: 'all',
             stats: ['all', 'active', 'completed']
         }
@@ -70,6 +74,7 @@ export default {
         Helper,
     },
     computed: {
+        ...mapState(['todos']),
         filteredTodos() {
             if (this.filter === 'all') {
                 return this.todos
@@ -81,17 +86,18 @@ export default {
         }
     },
     methods: {
-        addTodo(e) {
-            if (!e.target.value.trim()) return
+        ...mapActions(['fetchTodos']),
+        // addTodo(e) {
+        //     if (!e.target.value.trim()) return
 
-            this.todos.unshift({
-                id: id++,
-                content: e.target.value.trim(),
-                completed: false
-            })
+        //     this.todos.unshift({
+        //         id: id++,
+        //         content: e.target.value.trim(),
+        //         completed: false
+        //     })
 
-            e.target.value = ''
-        },
+        //     e.target.value = ''
+        // },
         deleteTodo(id) {
             this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
         },
