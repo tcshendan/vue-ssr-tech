@@ -1,6 +1,9 @@
 <template>
     <div :id="$style.app">
         <div :id="$style.cover"></div>
+        <div :id="$style.loading" v-show="loading">
+          <loading></loading>
+        </div>
         <app-header></app-header>
         <!-- <p>{{fullName}} {{counter}}</p>
         <router-link to="/app">app</router-link>
@@ -12,6 +15,7 @@
           :leave-active-class="$style['fade-leave-active']"
           :enter="$style['fade-enter']"
           :leave-to-class="$style['fade-leave-to']"
+          mode="out-in"
         >
           <router-view></router-view>
         </transition>
@@ -22,14 +26,15 @@
 </template>
 
 <script>
-// import {
-//   mapState,
-//   mapGetters,
-//   mapActions,
-//   mapMutations
-// } from 'vuex'
+import {
+  mapState
+  // mapGetters,
+  // mapActions,
+  // mapMutations
+} from 'vuex'
 import appHeader from './layout/header.vue'
 import appFooter from './layout/footer.jsx'
+import Loading from './components/loading/loading.vue'
 // import Todo from './views/todo/todo.vue'
 
 export default {
@@ -39,6 +44,7 @@ export default {
   components: {
     appHeader,
     appFooter,
+    Loading
     // Todo,
   },
   mounted () {
@@ -70,6 +76,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['loading'])
     // textA () {
     //   return this.$store.state.a.text
     // },
@@ -109,6 +116,18 @@ export default {
     background-color #999
     opacity 0.9
     z-index -1
+
+#loading
+    position fixed
+    top 0
+    right 0
+    bottom 0
+    left 0
+    background-color rgba(255, 255, 255, .3)
+    z-index 99
+    display flex
+    align-items center
+    justify-content center
 
 .fade-enter-active, .fade-leave-active
     transition opacity .5s
