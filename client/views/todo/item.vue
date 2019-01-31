@@ -1,9 +1,10 @@
 <template>
     <div :class="[$style['todo-item'], todo.completed ? $style.completed : '']">
-        <input 
+        <input
             type="checkbox"
             :class="$style.toggle"
-            v-model="todo.completed"
+            :checked="todo.completed"
+            @click="handleToggle"
         >
         <label>{{todo.content}}</label>
         <button :class="$style.destory" @click="deleteTodo"></button>
@@ -19,8 +20,12 @@ export default {
         }
     },
     methods: {
-        deleteTodo() {
-            this.$emit('del', this.todo.id)
+        deleteTodo () {
+          this.$emit('del', this.todo.id)
+        },
+        handleToggle (e) {
+          e.preventDefault()
+          this.$emit('toggle', this.todo)
         }
     }
 }
@@ -36,7 +41,7 @@ export default {
         .destory:after
             content: 'x'
 
-    label 
+    label
         white-space pre-line
         word-break break-all
         padding 15px 60px 15px 15px
@@ -44,7 +49,7 @@ export default {
         display block
         line-height 1.2
         transition color 0.4s
-    &.completed 
+    &.completed
         label
             color #d9d9d9
             text-decoration  line-through
@@ -57,7 +62,7 @@ export default {
         top 0
         bottom 0
         margin auto 0
-        border none 
+        border none
         appearance none
         outline none
         &:after
