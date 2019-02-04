@@ -63,7 +63,9 @@ export default {
     // props: ['id'],
     mounted () {
       // console.log('todo mounted')
-      this.fetchTodos()
+      if (this.todos && !this.todos.length) {
+        this.fetchTodos()
+      }
     },
     asyncData ({ store }) {
       // return new Promise((resolve) => {
@@ -71,7 +73,10 @@ export default {
       //     resolve(123)
       //   }, 1000)
       // })
-      return store.dispatch('fetchTodos')
+      if (store.state.user) {
+        return store.dispatch('fetchTodos')
+      }
+      return Promise.resolve()
     },
     data() {
         return {
