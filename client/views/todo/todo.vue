@@ -35,6 +35,7 @@ import {
 } from 'vuex'
 import Item from './item.vue'
 import Helper from './helper.vue'
+import { setTimeout } from 'timers';
 
 // let id = 0
 
@@ -63,6 +64,14 @@ export default {
     mounted () {
       // console.log('todo mounted')
       this.fetchTodos()
+    },
+    asyncData ({ store }) {
+      // return new Promise((resolve) => {
+      //   setTimeout(() => {
+      //     resolve(123)
+      //   }, 1000)
+      // })
+      return store.dispatch('fetchTodos')
     },
     data() {
         return {

@@ -59,4 +59,10 @@ config = merge(baseConfig, {
   ]
 })
 
+config.resolve = {
+  alias: {
+    'model': path.join(__dirname, '../client/model/server-model.js')
+  }
+}
+
 module.exports = config
