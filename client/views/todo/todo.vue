@@ -67,7 +67,7 @@ export default {
         this.fetchTodos()
       }
     },
-    asyncData ({ store }) {
+    asyncData ({ store, router }) {
       // return new Promise((resolve) => {
       //   setTimeout(() => {
       //     resolve(123)
@@ -76,6 +76,7 @@ export default {
       if (store.state.user) {
         return store.dispatch('fetchTodos')
       }
+      router.replace('/login')
       return Promise.resolve()
     },
     data() {
