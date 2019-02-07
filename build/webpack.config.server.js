@@ -2,8 +2,25 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
-// const VueServerPlugin = require('vue-server-renderer/server-plugin')
+const VueServerPlugin = require('vue-server-renderer/server-plugin')
 const baseConfig = require('./webpack.config.base')
+
+const isDev = process.env.NODE_ENV === 'development'
+
+const plugins = [
+  new ExtractTextWebpackPlugin({
+    filename: 'styles.[hash:8].css',
+    allChunks: true
+  }),
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    'process.env.VUE_ENV': '"server"'
+  })
+]
+
+if (isDev) {
+  plugins.push(new VueServerPlugin())
+}
 
 let config
 
@@ -46,17 +63,7 @@ config = merge(baseConfig, {
       }
     ]
   },
-  plugins: [
-    new ExtractTextWebpackPlugin({
-      filename: 'styles.[hash:8].css',
-      allChunks: true
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-      'process.env.VUE_ENV': '"server"'
-    })
-    // new VueServerPlugin()
-  ]
+  plugins
 })
 
 config.resolve = {
